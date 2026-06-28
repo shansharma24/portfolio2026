@@ -103,15 +103,20 @@ export default function Hero() {
               <div className="mt-3 h-px w-16 bg-neutral-500/60" />
             </motion.div>
 
+            <div className="h-8" />
+
             <motion.p
               custom={3}
               initial="hidden"
               animate="show"
               variants={fade}
-              className="mt-8 text-white/85 text-base md:text-[17px] leading-relaxed max-w-md"
+              className="mt-2 text-white/85 text-base md:text-[17px] leading-relaxed max-w-md"
             >
               I build scalable, intelligent, and human-centered digital experiences.
             </motion.p>
+
+            <div className="h-8" />
+
 
             <motion.div
               custom={4}
@@ -126,8 +131,8 @@ export default function Hero() {
                 className="group inline-flex items-center gap-3 rounded-full border border-white/80 bg-transparent px-6 py-3.5 text-[11px] font-semibold tracking-[0.22em] text-white transition-all hover:bg-white hover:text-black"
               >
                 VIEW MY WORK
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-white text-black transition-transform group-hover:translate-x-1 group-hover:bg-black group-hover:text-white">
-                  <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-black transition-transform group-hover:translate-x-1 group-hover:bg-black group-hover:text-white">
+                  <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />
                 </span>
               </a>
 
