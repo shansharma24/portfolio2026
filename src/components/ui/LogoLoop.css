@@ -1,0 +1,124 @@
+.logo-loop-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.logo-loop-track {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-loop-gap, 48px);
+  width: max-content;
+  animation: logo-loop-scroll var(--logo-loop-duration, 20s) linear infinite;
+  animation-direction: var(--logo-loop-direction, normal);
+}
+
+.logo-loop-paused {
+  animation-play-state: paused;
+}
+
+@keyframes logo-loop-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-loop-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo-loop-item:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.logo-loop-scalable:hover {
+  transform: scale(1.15);
+}
+
+.logo-loop-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.logo-loop-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-loop-fade-left {
+  left: 0;
+}
+
+.logo-loop-fade-right {
+  right: 0;
+}
+
+/* Custom Tooltip Styles */
+.logo-loop-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background-color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: #ffffff;
+  padding: 5px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.logo-loop-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: #141414 transparent transparent transparent;
+}
+
+/* Tooltip Arrow Border (matching the parent border color) */
+.logo-loop-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(1px);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.125) transparent transparent transparent;
+  z-index: -1;
+}
+
+.logo-loop-item:hover .logo-loop-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}

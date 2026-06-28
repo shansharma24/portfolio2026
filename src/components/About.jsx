@@ -9,15 +9,40 @@ import {
   FolderOpen,
   Users,
 } from 'lucide-react'
-import { FaReact, FaNodeJs, FaGithub } from 'react-icons/fa'
+import { FaReact, FaNodeJs, FaPython, FaGithub, FaDocker, FaFigma } from 'react-icons/fa'
 import {
   SiNextdotjs,
   SiTypescript,
   SiMongodb,
   SiExpress,
   SiTailwindcss,
+  SiOpenai,
+  SiVercel,
+  SiPostgresql,
+  SiOpencv,
+  SiFramer,
 } from 'react-icons/si'
 import aboutPhoto from '../assets/about.jpg'
+import LogoLoop from './ui/LogoLoop'
+
+const techLogos = [
+  { node: <FaReact />, title: 'React' },
+  { node: <SiNextdotjs />, title: 'Next.js' },
+  { node: <SiTypescript />, title: 'TypeScript' },
+  { node: <SiTailwindcss />, title: 'Tailwind CSS' },
+  { node: <SiFramer />, title: 'Framer Motion' },
+  { node: <FaNodeJs />, title: 'Node.js' },
+  { node: <SiExpress />, title: 'Express' },
+  { node: <FaPython />, title: 'Python' },
+  { node: <SiOpenai />, title: 'OpenAI' },
+  { node: <SiOpencv />, title: 'OpenCV' },
+  { node: <SiMongodb />, title: 'MongoDB' },
+  { node: <SiPostgresql />, title: 'PostgreSQL' },
+  { node: <FaDocker />, title: 'Docker' },
+  { node: <SiVercel />, title: 'Vercel' },
+  { node: <FaFigma />, title: 'Figma' },
+  { node: <FaGithub />, title: 'GitHub' },
+]
 
 const fade = {
   hidden: { opacity: 0, y: 20 },
@@ -41,16 +66,6 @@ const stats = [
   { icon: Users,      value: '2',   label: 'Communities Led' },
 ]
 
-const techStack = [
-  { icon: FaReact,       label: 'React' },
-  { icon: SiNextdotjs,   label: 'Next.js' },
-  { icon: FaNodeJs,      label: 'Node.js' },
-  { icon: SiTypescript,  label: 'TypeScript' },
-  { icon: SiMongodb,     label: 'MongoDB' },
-  { icon: SiExpress,     label: 'Express' },
-  { icon: SiTailwindcss, label: 'Tailwind' },
-  { icon: FaGithub,      label: 'GitHub' },
-]
 
 export default function About() {
   const sectionRef = useRef(null)
@@ -334,83 +349,45 @@ export default function About() {
         </motion.div>
       </div>
 
-      {/* ── Tech Stack bar — full width, bottom ── */}
+      {/* ── Tech Stack — LogoLoop marquee ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ delay: 0.8, duration: 0.6 }}
-        style={{
-          position: 'relative',
-          zIndex: 10,
-          borderTop: '1px solid rgba(255,255,255,0.1)',
-          backgroundColor: 'rgba(10,10,10,0.92)',
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 40px',
-          height: '68px',
-          gap: '0',
-        }}
+        className="relative z-10"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.08)', backgroundColor: 'rgba(10,10,10,0.92)' }}
       >
-        {/* Label */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            flexShrink: 0,
-            marginRight: '0',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '11px',
-              fontWeight: 600,
-              letterSpacing: '0.18em',
-              color: 'rgba(255,255,255,0.5)',
-            }}
-          >
-            TECH STACK
-          </span>
-          <span
-            style={{
-              width: '5px',
-              height: '5px',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(255,255,255,0.4)',
-              display: 'inline-block',
-              flexShrink: 0,
-            }}
-          />
-        </div>
-
-        {/* Icons */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            flex: 1,
-          }}
-        >
-          {techStack.map(({ icon: Icon, label }, i) => (
-            <div
-              key={label}
+        <div className="flex items-center h-[76px] px-8 lg:px-10">
+          {/* Label */}
+          <div className="flex items-center gap-2.5 shrink-0 mr-6">
+            <span
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.08)',
-                flex: 1,
-                height: '68px',
+                fontSize: '10px',
+                fontWeight: 600,
+                letterSpacing: '0.2em',
+                color: 'rgba(255,255,255,0.4)',
               }}
             >
-              <Icon
-                size={22}
-                style={{ color: 'rgba(255,255,255,0.6)' }}
-                aria-label={label}
-              />
-            </div>
-          ))}
+              TECH STACK
+            </span>
+            <span className="h-1 w-1 rounded-full bg-white/30" />
+          </div>
+
+          {/* LogoLoop */}
+          <div className="flex-1 overflow-hidden">
+            <LogoLoop
+              logos={techLogos}
+              speed={60}
+              direction="left"
+              logoHeight={28}
+              gap={56}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#0a0a0a"
+              ariaLabel="Tech stack technologies"
+            />
+          </div>
         </div>
       </motion.div>
     </section>
