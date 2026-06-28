@@ -303,11 +303,11 @@ export default function Navbar() {
                 borderTop: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              <a href="https://github.com/shanexsharma" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/shansharma24" target="_blank" rel="noopener noreferrer"
                 style={{ color: "rgba(255,255,255,0.75)", display: "flex" }}>
                 <FaGithub size={20} />
               </a>
-              <a href="https://linkedin.com/in/shanexsharma" target="_blank" rel="noopener noreferrer"
+              <a href="www.linkedin.com/in/shan-sharma-726706292" target="_blank" rel="noopener noreferrer"
                 style={{ color: "rgba(255,255,255,0.75)", display: "flex" }}>
                 <FaLinkedinIn size={20} />
               </a>
